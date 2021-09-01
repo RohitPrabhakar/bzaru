@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>157511829902-88ke7gtb16avlj4ca2gumnr487r18cia.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.157511829902-88ke7gtb16avlj4ca2gumnr487r18cia</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>157511829902-0cletk37ufu25b0geemi2ejd269c7959.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCV3GIP2jXEtzBAcMDbsQw_2tFjj3myU_E</string>
+	<key>GCM_SENDER_ID</key>
+	<string>157511829902</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.thealphamerc.flutterBzaru</string>
+	<key>PROJECT_ID</key>
+	<string>dev-bzaru</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dev-bzaru.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:157511829902:ios:cf137befc5dc7397f13cdf</string>
+	<key>DATABASE_URL</key>
+	<string>https://dev-bzaru.firebaseio.com</string>
+</dict>
+</plist>

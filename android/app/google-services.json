@@ -1,0 +1,103 @@
+{
+  "project_info": {
+    "project_number": "157511829902",
+    "firebase_url": "https://dev-bzaru.firebaseio.com",
+    "project_id": "dev-bzaru",
+    "storage_bucket": "dev-bzaru.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157511829902:android:588168e642b043b3f13cdf",
+        "android_client_info": {
+          "package_name": "com.bzaru.bzaruapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157511829902-0cletk37ufu25b0geemi2ejd269c7959.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bzaru.bzaruapp",
+            "certificate_hash": "6517d9a7df0da08b180f870927be7d50e77c36bc"
+          }
+        },
+        {
+          "client_id": "157511829902-3gaav59sfv5aaab6ifogd81372pd0oc9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bzaru.bzaruapp",
+            "certificate_hash": "fac5b58f7e0eddd4299ba59a45c4d4d60d291197"
+          }
+        },
+        {
+          "client_id": "157511829902-3hnhodd0dcve32e6d4oj1b1ifc7ds865.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bzaru.bzaruapp",
+            "certificate_hash": "76bcb3fc2a7b818c2470402c2a9b96d2abaac453"
+          }
+        },
+        {
+          "client_id": "157511829902-733bem38q3dcsm44kbjkgrfvplvl8pco.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bzaru.bzaruapp",
+            "certificate_hash": "d51aabf612a86b9a474401d031e9423fee6ade97"
+          }
+        },
+        {
+          "client_id": "157511829902-lto9baglmosb9dgkn03j0umoak6t2vuo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bzaru.bzaruapp",
+            "certificate_hash": "56938ba31cd98071659c8bba67b0aa2ebb8a6f45"
+          }
+        },
+        {
+          "client_id": "157511829902-q2aks9ejvn1p5vgvmev7bfiqicslc0od.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bzaru.bzaruapp",
+            "certificate_hash": "520c751a01ed1f84d22c043eafc320a6a2720206"
+          }
+        },
+        {
+          "client_id": "157511829902-qcq2ochoqgp4n5c4pkq1cj2mgka12ghs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bzaru.bzaruapp",
+            "certificate_hash": "9de309e80db3f39ce864ebdb5eb057b1201d3eb0"
+          }
+        },
+        {
+          "client_id": "157511829902-e4fp2mrblfnn1g9t7ia176p2jnpj05mo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAH4CxhMZAbMfYTlbD3L4Z3Ug1GQUyMSVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157511829902-e4fp2mrblfnn1g9t7ia176p2jnpj05mo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "157511829902-88ke7gtb16avlj4ca2gumnr487r18cia.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.thealphamerc.flutterBzaru"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
