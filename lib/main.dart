@@ -9,11 +9,16 @@ import 'package:flutter_bzaru/helper/config.dart';
 import 'package:flutter_bzaru/helper/configs.dart';
 import 'package:flutter_bzaru/locator.dart';
 import 'package:flutter_bzaru/ui/pages/splash.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:timezone/data/latest.dart' as tZ;
 
 void main() async {
   final config = devConfig();
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Load environment variables from .env file
+  await dotenv.load(fileName: ".env");
+
   await Firebase.initializeApp();
   // tZ.initializeTimeZones();
 

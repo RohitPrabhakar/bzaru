@@ -41,3 +41,18 @@ app.*.map.json
 
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Firebase configuration files (contain sensitive data)
+google-services.json
+GoogleService-Info.plist
+firebase_options.dart
+
+# API keys and secrets
+**/secrets/
+**/config/secrets.dart
+lib/helper/secrets.dart

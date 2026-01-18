@@ -1,5 +1,13 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class Constants {
-  static const apiBaseUrl = ""; //TODO: ADD BASE URL
+  // Environment variables - loaded from .env file
+  static String get apiBaseUrl => dotenv.env['API_BASE_URL'] ?? '';
+  static String get kGoogleApiKey => dotenv.env['GOOGLE_MAPS_API_KEY'] ?? '';
+  static String get appLink => dotenv.env['APP_LINK'] ?? 'https://bzaru.com/';
+  static String get privacyTermsLink => dotenv.env['PRIVACY_TERMS_LINK'] ?? '';
+
+  // Firebase collection names (not sensitive)
   static const userCollecrion = "users";
   static const customerCollection = "customer";
   static const merchantCollection = "merchant";
@@ -18,13 +26,10 @@ class Constants {
   static const adsCollection = "banner-ads";
   static const orderDateDocument = "order-date";
   static const termsConditionCollection = "terms-condition";
-  static const webSiteLink = "https://bzaru.com/";
-  static const appLink = "https://bzaru.com/"; //TODO: CHANGE
-  static const privacyTermsLink = ""; //TODO: CHANGE
-
   static const orderMasterCollection = "order-master";
   static const orderSubCollection = "order-sub";
   static const productMasterCollection = "product-master";
 
-  static const kGoogleApiKey = "AIzaSyCN4Y0uWd7sfPrQit_lR1ur_xAEz4PMLH4";
+  // Static website link (public)
+  static const webSiteLink = "https://bzaru.com/";
 }
