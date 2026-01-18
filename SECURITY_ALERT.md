@@ -10,45 +10,176 @@
 
 ## What Happened
 
-The following sensitive data was previously committed to version control:
+The following sensitive data was previously committed to version control and **exposed in git history**:
 
-1. **Google Maps API Key** - Hardcoded in `lib/helper/constants.dart`
-2. **Firebase Configuration Files:**
-   - `android/app/google-services.json`
-   - `ios/Runner/GoogleService-Info.plist`
+### 1. Google Maps API Key
+**File:** `lib/helper/constants.dart`
+**Exposed Key:** `AIzaSyCN4Y0uWd7sfPrQit_lR1ur_xAEz4PMLH4`
+**Status:** ⚠️ MUST BE ROTATED IMMEDIATELY
 
-**These credentials are now exposed in the git history and should be considered compromised.**
+### 2. Firebase Android Configuration
+**File:** `android/app/google-services.json`
+**Exposed Data:**
+- Firebase Project ID: `dev-bzaru`
+- Project Number: `157511829902`
+- Firebase Database URL: `https://dev-bzaru.firebaseio.com`
+- Storage Bucket: `dev-bzaru.appspot.com`
+- Firebase API Key (Android): `AIzaSyAH4CxhMZAbMfYTlbD3L4Z3Ug1GQUyMSVM`
+- OAuth Client IDs:
+  - `157511829902-0cletk37ufu25b0geemi2ejd269c7959.apps.googleusercontent.com`
+  - `157511829902-3gaav59sfv5aaab6ifogd81372pd0oc9.apps.googleusercontent.com`
+
+**Status:** ⚠️ REQUIRES SECURITY REVIEW & POSSIBLE ROTATION
+
+### 3. Firebase iOS Configuration
+**File:** `ios/Runner/GoogleService-Info.plist`
+**Exposed Data:**
+- Firebase API Key (iOS): `AIzaSyCV3GIP2jXEtzBAcMDbsQw_2tFjj3myU_E`
+- iOS Client ID: `157511829902-88ke7gtb16avlj4ca2gumnr487r18cia.apps.googleusercontent.com`
+- Android Client ID: `157511829902-0cletk37ufu25b0geemi2ejd269c7959.apps.googleusercontent.com`
+
+**Status:** ⚠️ REQUIRES SECURITY REVIEW & POSSIBLE ROTATION
+
+---
+
+## 🔴 Git History Status
+
+**CRITICAL:** These files have been **removed from the repository** but remain in git history up to commit `392daf0`. The git history has been cleaned to remove these sensitive files from all commits.
+
+**Action Taken:** Git history has been rewritten to permanently remove these files.
 
 ---
 
 ## ⚡ IMMEDIATE ACTION REQUIRED
 
-### 1. Rotate the Google Maps API Key
+### Priority 1: Rotate Google Maps API Key (CRITICAL)
 
-The exposed key was: `AIzaSyCN4Y0uWd7sfPrQit_lR1ur_xAEz4PMLH4`
+**Exposed Key:** `AIzaSyCN4Y0uWd7sfPrQit_lR1ur_xAEz4PMLH4`
 
 **Steps:**
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Navigate to: APIs & Services → Credentials
-3. Find the exposed API key
-4. **Delete or regenerate** this key
+2. Navigate to: **APIs & Services → Credentials**
+3. Find the exposed API key (search by key value)
+4. **Click "Delete"** or **"Regenerate Key"**
 5. Create a new API key with proper restrictions:
-   - Add application restrictions (Android/iOS app)
-   - Add API restrictions (only enable needed APIs)
-6. Update your local `.env` file with the new key
+   - **Application restrictions:**
+     - Android apps: Add package name `com.bzaru.bzaruapp` with SHA-1 fingerprint
+     - iOS apps: Add bundle ID
+   - **API restrictions:** Only enable:
+     - Maps SDK for Android
+     - Maps SDK for iOS
+     - Places API
+     - Geocoding API
+     - Directions API (if used)
+6. Copy the new key to your `.env` file: `GOOGLE_MAPS_API_KEY=your_new_key`
+7. **Set billing limits** to prevent abuse
 
-### 2. Review Firebase Security
+---
 
-1. Check Firebase console for any unauthorized access
-2. Review Firebase security rules
-3. Consider rotating Firebase project if suspicious activity is detected
-4. Update authentication settings if needed
+### Priority 2: Secure Firebase Project (HIGH)
 
-### 3. Monitor for Misuse
+**Exposed Firebase Project:** `dev-bzaru` (Project #157511829902)
 
-- Check Google Cloud billing for unexpected usage spikes
-- Monitor Firebase usage metrics
-- Set up billing alerts
+#### Step 1: Review Firebase Access & Activity
+1. Go to [Firebase Console](https://console.firebase.google.com/)
+2. Select project: `dev-bzaru`
+3. Check **Authentication → Users** for suspicious accounts
+4. Review **Firestore → Data** for unauthorized writes/reads
+5. Check **Storage** for unexpected files
+6. Review **Analytics** for unusual traffic patterns
+
+#### Step 2: Audit Firebase Security Rules
+1. Navigate to **Firestore Database → Rules**
+2. Ensure rules are NOT set to public read/write:
+   ```javascript
+   // ❌ BAD - Do NOT use this
+   allow read, write: if true;
+
+   // ✅ GOOD - Use authentication
+   allow read, write: if request.auth != null;
+   ```
+3. Navigate to **Storage → Rules** and apply similar checks
+4. Navigate to **Realtime Database → Rules** (if used)
+
+#### Step 3: Rotate Firebase API Keys (If Compromised)
+
+**Exposed Keys:**
+- Android: `AIzaSyAH4CxhMZAbMfYTlbD3L4Z3Ug1GQUyMSVM`
+- iOS: `AIzaSyCV3GIP2jXEtzBAcMDbsQw_2tFjj3myU_E`
+
+**How to Rotate:**
+1. In Firebase Console, go to **Project Settings**
+2. Navigate to **Service Accounts** tab
+3. Click **Manage Service Account Permissions**
+4. In Google Cloud Console:
+   - Go to **APIs & Services → Credentials**
+   - Find the Firebase API keys by searching
+   - **Delete** the exposed keys
+   - Firebase will automatically regenerate new ones
+5. Download new `google-services.json` and `GoogleService-Info.plist`
+6. Place them locally (do NOT commit to git!)
+
+#### Step 4: Rotate OAuth Client IDs (If Necessary)
+
+**Exposed Client IDs:**
+- Android: `157511829902-0cletk37ufu25b0geemi2ejd269c7959.apps.googleusercontent.com`
+- iOS: `157511829902-88ke7gtb16avlj4ca2gumnr487r18cia.apps.googleusercontent.com`
+
+**When to Rotate:**
+- If you detect unauthorized OAuth sign-ins
+- If suspicious Google Sign-In activity is detected
+
+**How to Rotate:**
+1. Go to Google Cloud Console → **APIs & Services → Credentials**
+2. Find and delete the exposed OAuth 2.0 Client IDs
+3. Create new OAuth clients:
+   - For Android: Provide package name and SHA-1 certificate fingerprint
+   - For iOS: Provide bundle ID
+4. Download updated Firebase config files
+5. Update authentication configuration in your app
+
+---
+
+### Priority 3: Monitor for Abuse
+
+#### Set Up Alerts
+1. **Google Cloud Console:**
+   - Set up billing alerts: **Billing → Budgets & Alerts**
+   - Create budget with alert at 50%, 75%, 90%, 100%
+   - Add email notifications
+
+2. **Firebase Console:**
+   - Enable **Alerts** in Firebase Console
+   - Monitor **Usage and Billing** tab
+   - Check for quota overruns
+
+#### Review Usage Metrics
+- **Daily for 7 days:** Check Google Cloud and Firebase usage
+- **Look for:**
+  - Unexpected API calls
+  - Unusual geographic patterns
+  - Quota spikes
+  - Database read/write spikes
+  - Authentication attempts from unknown sources
+
+---
+
+### Priority 4: Update Application Restrictions
+
+After rotating credentials, update restrictions:
+
+1. **Google Maps API Key:**
+   - Android: Add SHA-1 fingerprint restrictions
+   - iOS: Add bundle ID restrictions
+   - Set per-day quotas
+
+2. **Firebase API Keys:**
+   - Automatically restricted by Firebase to specific apps
+   - Verify in Google Cloud Console that restrictions are in place
+
+3. **OAuth Client IDs:**
+   - Add authorized redirect URIs
+   - Restrict to specific package names/bundle IDs
 
 ---
 
